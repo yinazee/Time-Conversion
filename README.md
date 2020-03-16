@@ -9,20 +9,18 @@ function timeConversion(s) {
     // 2 = 14
 
     // will output [ '07', '05', '45' ]
-    let hour = s.slice(0, -2).split(":")
+    let timeArr = s.slice(0, -2).split(":")
+    
     // will output AM or PM
     let ampm = s.slice(-2)
 
     // FOR 12AM, it should output 00:00:00
-    if (ampm === "AM") {
-
-        if (hour[0] === 0) {
-            hour = hour[1] + 12
-            console.log(hour[1])
+        if (ampm === "AM" && timeArr[0] === "12") {
+            timeArr[0] = "00"
+        }else if (ampm === "PM") {
+        //add 12 to make it military time
+             timeArr[0] = (timeArr[0] % 12) + 12
         }
-           
-    
     }
-
- 
+        console.log(timeArr)
 }
